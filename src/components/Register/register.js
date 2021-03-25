@@ -1,36 +1,10 @@
 import React, { Component } from 'react';
-import "./login.css"
-class Login extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            email: "",
-            password: ""
-        }
-
-        this.emailRef = React.createRef();
-        this.passwordRef = React.createRef();
-
-    }
-    captureData = (event) => {
-        var name = event.target.name;
-        var value = event.target.value;
-        this.setState({ [name]: value });
-    }
-
-    login = (event) => {
-        event.preventDefault();
-        console.log('data', this.state);
-    }
-
-
-
-    render() {
+class Register extends Component {
+    
+    render() { 
         return (
             <div>
-
-                <div id="login" >
+                 <div id="login" >
                     <h1 className="text-center text-white pt-5 headcolor" > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h1>
 
                     <div className="container">
@@ -41,15 +15,15 @@ class Login extends Component {
                                         <h3  className="text-center text-info" ><span style={{color:"white"}}>SIGN IN</span></h3>
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" onClick={this.captureData} name="username" id="username" className="form-control" placeholder="email" />
+                                            <input type="text" name="username" id="username" className="form-control" placeholder="email" />
                                         </div>
                                         <div className=" txt_field form-group">
 
-                                            <input type="text"  onClick={this.captureData}  name="password" id="password" className="form-control" placeholder="password" />
+                                            <input type="text" name="password" id="password" className="form-control" placeholder="password" />
                                         </div>
                                         <div className="form-group">
                                         <h5><a href="#" className="pass">forgot password</a></h5>
-                                            <input type="button" onClick={this.login} className="btn btn-info btn-md" value="SIGN IN" />
+                                            <input type="submit" name="submit" className="btn btn-info btn-md" value="SIGN IN" />
                                         </div>
                                         <div >
                                             
@@ -60,19 +34,9 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
-        );
+          );
     }
 }
-
-export default Login;
-
-
-
-
-
+ 
+export default Register;
