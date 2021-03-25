@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 class Register extends Component {
-    
-    render() { 
+
+    render() {
         return (
             <div>
-                 <div id="login" >
+                <div id="login" >
                     <h1 className="text-center text-white pt-5 headcolor" > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h1>
 
                     <div className="container">
@@ -12,21 +12,45 @@ class Register extends Component {
                             <div id="login-column" className="col-md-6">
                                 <div id="login-box" className="col-md-12 text-center">
                                     <form id="login-form" className="form" >
-                                        <h3  className="text-center text-info" ><span style={{color:"white"}}>SIGN IN</span></h3>
+                                        <h3 className="text-center text-info" ><span style={{ color: "white" }}>SIGN IN</span></h3>
+
+
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" name="username" id="username" className="form-control" placeholder="email" />
+                                            <input type="text" name="Firstname" id="username" className="form-control" placeholder="Firstname" />
+                                        </div>
+
+                                        <div className=" txt_field form-group">
+
+                                            <input type="text" name="Lastname" id="username" className="form-control" placeholder="Lastname" />
+                                        </div>
+
+
+
+                                        <div className=" txt_field form-group">
+
+                                            <input type="text" name="username" className="form-control" placeholder="email" />
                                         </div>
                                         <div className=" txt_field form-group">
 
                                             <input type="text" name="password" id="password" className="form-control" placeholder="password" />
                                         </div>
+
+
+                                        <div className=" txt_field form-group">
+
+                                            <input type="number" name="mobile" id="username" className="form-control" placeholder="mobile no" />
+                                        </div>
+                                        <div className=" txt_field form-group">
+
+                                            <input type="text" name="City" id="username" className="form-control" placeholder="city" />
+                                        </div>
                                         <div className="form-group">
-                                        <h5><a href="#" className="pass">forgot password</a></h5>
-                                            <input type="submit" name="submit" className="btn btn-info btn-md" value="SIGN IN" />
+                                            
+                                            <input type="submit" name="submit" className="btn btn-info btn-md" value="Register" />
                                         </div>
                                         <div >
-                                            
+
                                         </div>
                                     </form>
                                 </div>
@@ -35,8 +59,8 @@ class Register extends Component {
                     </div>
                 </div>
             </div>
-          );
+        );
     }
 }
- 
+
 export default Register;
