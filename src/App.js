@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/Login/login';
+
+
+import Header from './components/Header/header';
+
+import { BrowserRouter,  Route } from "react-router-dom"
+import Dashboard from './components/Dashboard/dashboard';
 import Register from './components/Register/register';
-import { BrowserRouter, NavLink, Route } from "react-router-dom"
-import Dashboard from "./components/Dashboard/dashboard";
+import Login from './components/Login/login';
+import Changepassword from './components/chnagepassword/changepassword';
 
 function App() {
   return (
     <div>
 
+      
       <BrowserRouter>
-
-        {/* <NavLink to="/login" >Login</NavLink> &nbsp; &nbsp; &nbsp;
-      <NavLink to="/register" >register</NavLink> &nbsp; &nbsp; &nbsp; &nbsp; */}
-
-     <Route path="/" exact component={Dashboard} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
+      <Route path="/" exact component={Header} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/changepassword" component={Changepassword} />
 
       </BrowserRouter>
+
 
 
     </div>

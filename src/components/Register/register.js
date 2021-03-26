@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./register.css"
+import axios from "axios";
 class Register extends Component {
     constructor() {
         super();
@@ -100,7 +101,17 @@ class Register extends Component {
 
     register = (event) => {
         event.preventDefault();
-        console.log(this.state)
+        axios.post('http://localhost:8080/v1/user/register', this.state).then(
+            res => {
+                if (res.data.token) {
+                    sessionStorage.setItem("token", res.data.token);
+                    this.props.history.push("/dashboard")
+                }
+            },
+            err => {
+                console.log(err)
+            }
+        )
     }
 
 

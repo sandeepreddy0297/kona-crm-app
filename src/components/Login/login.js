@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import "./login.css"
+import axios from "axios";
+
 class Login extends Component {
     constructor() {
         super();
@@ -46,10 +48,19 @@ class Login extends Component {
 
     login = (event) => {
         event.preventDefault();
-        console.log('data', this.state);
-
-        this.props.history.push("./")
-    }
+        console.log("state values", this.state)
+        axios.post('http://localhost:8080/v1/user/login', this.state).then(
+          res => {
+            if (res.data.token) {
+              sessionStorage.setItem("token", res.data.token)
+              this.props.history.push("/dashboard")
+            }
+          },
+          err => {
+            console.log(err)
+          }
+        )
+      }
 
 
 

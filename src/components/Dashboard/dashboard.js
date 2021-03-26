@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import "./dashboard.css"
 class Dashboard extends Component {
 
@@ -9,14 +10,15 @@ class Dashboard extends Component {
                     <h3 className="header" > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h3>
 
                     <div className="links">
-                        <a href="#" >Dashboard</a>
-                        <a href="#">Leads</a>
-                        <a href="#">Report</a>
-                        <a href="#">Settings</a>
+                        <NavLink to="/changepassword">Dashboard</NavLink>
+                        <NavLink to="/changepassword">Leads</NavLink>
+                        <NavLink to="/changepassword">Report</NavLink>
+                        <NavLink to="/changepassword">Settings</NavLink>
+                        <NavLink to="/changepassword">Changepassword</NavLink>
 
                     </div>
 
-                    <a href="#" >change password</a>
+
                 </div>
                 <div className="topnav">
                     <a className="active" href="#home">logout</a>
