@@ -1,9 +1,112 @@
 import React, { Component } from 'react';
+import "./register.css"
 class Register extends Component {
+    constructor() {
+        super();
+        this.state = {
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: "",
+            mobile: "",
+            city: ""
+
+        }
+        this.firstnameRef = React.createRef();
+        this.lastnameRef = React.createRef();
+        this.emailRef = React.createRef();
+        this.passwordRef = React.createRef();
+
+        this.mobileRef = React.createRef();
+        this.cityRef = React.createRef();
+    }
+
+
+
+    emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&_?"])(?=.*\d).{8,}$/;
+    firstName = false
+    lastName = false
+    mobile = false
+    city = false
+
+
+
+    captureData = event => {
+        //console.log(this.confirmPass);
+        let name = event.target.name;
+        let value = event.target.value;
+        //console.log(value)
+        if (name == "firstName") {
+            if (value != "" && value.length > 3) {
+                this.firstnameRef.current.innerHTML = ""
+                this.firstName = true
+                this.setState({ [name]: value })
+            } else {
+                this.firstnameRef.current.innerHTML = "Please enter the firstname"
+                this.firstName = false
+            }
+        }
+        if (name == "lastName") {
+            if (value != "" && value.length > 3) {
+                this.lastnameRef.current.innerHTML = ""
+                this.lastName = true
+                this.setState({ [name]: value })
+            } else {
+                this.lastnameRef.current.innerHTML = "Please enter the lastname"
+                this.lastName = false
+            }
+        }
+        if (name == "password") {
+            let passwordValidation = this.passwordPattern.test(value)
+            if (value != "" && passwordValidation) {
+                this.setState({ [name]: value })
+                this.passwordRef.current.innerHTML = ""
+            } else {
+                this.passwordRef.current.innerHTML = "password required"
+            }
+        }
+        if (name == "email") {
+            let emailvalidation = this.emailPattern.test(value)
+            if (value != "" && emailvalidation) {
+                this.setState({ [name]: value })
+                this.emailRef.current.innerHTML = ""
+            } else {
+                this.emailRef.current.innerHTML = "Email required"
+            }
+        }
+        if (name == "mobileNo") {
+            if (value.length == 10) {
+                this.mobileRef.current.innerHTML = ""
+                this.mobile = true
+            } else {
+                this.mobileRef.current.innerHTML = "Invalid mobile number"
+                this.mobile = false
+            }
+        }
+        if (name == "city") {
+            if (value != "" && value != null) {
+                this.cityRef.current.innerHTML = ""
+                this.city = true
+            } else {
+                this.cityRef.current.innerHTML = "Please enter your city name"
+                this.city = false
+            }
+        }
+        this.setState({ [name]: event.target.value })
+    }
+
+
+
+    register = (event) => {
+        event.preventDefault();
+        console.log(this.state)
+    }
+
 
     render() {
         return (
-            <div>
+            <div className="register">
                 <div id="login" >
                     <h1 className="text-center text-white pt-5 headcolor" > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h1>
 
@@ -17,37 +120,44 @@ class Register extends Component {
 
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" name="Firstname" id="username" className="form-control" placeholder="Firstname" />
+                                            <input type="text" name="firstname" onChange={this.captureData} className="form-control" placeholder="Firstname" />
+                                            <p style={{ color: 'red', fontSize: 18 + 'px' }} ref={this.firstnameRef}></p>
                                         </div>
 
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" name="Lastname" id="username" className="form-control" placeholder="Lastname" />
+                                            <input type="text" name="lastname" onChange={this.captureData} className="form-control" placeholder="Lastname" />
+                                            <p style={{ color: 'red', fontSize: 18 + 'px' }} ref={this.lastnameRef}></p>
                                         </div>
 
 
 
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" name="username" className="form-control" placeholder="email" />
+                                            <input type="text" name="email" onChange={this.captureData} className="form-control" placeholder="email" />
+                                            <p style={{ color: 'red', fontSize: 18 + 'px' }} ref={this.emailRef}></p>
                                         </div>
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" name="password" id="password" className="form-control" placeholder="password" />
-                                        </div>
+                                            <input type="password" name="password" id="password" onChange={this.captureData} className="form-control" placeholder="password" />
+                                            <p style={{ color: 'red', fontSize: 18 + 'px' }} ref={this.passwordRef}></p>
 
+                                        </div>
 
                                         <div className=" txt_field form-group">
 
-                                            <input type="number" name="mobile" id="username" className="form-control" placeholder="mobile no" />
+                                            <input type="number" name="mobile" onChange={this.captureData} className="form-control" placeholder="mobile no" />
+                                            <p style={{ color: 'red', fontSize: 18 + 'px' }} ref={this.mobileRef}></p>
                                         </div>
                                         <div className=" txt_field form-group">
 
-                                            <input type="text" name="City" id="username" className="form-control" placeholder="city" />
+                                            <input type="text" name="city" onChange={this.captureData} className="form-control" placeholder="city" />
+                                            <p style={{ color: 'red', fontSize: 18 + 'px' }} ref={this.cityRef}></p>
                                         </div>
                                         <div className="form-group">
-                                            
-                                            <input type="submit" name="submit" className="btn btn-info btn-md" value="Register" />
+
+                                            <input type="submit" name="submit" onClick={this.register} className="btn btn-info btn-md" value="Register" />
+
                                         </div>
                                         <div >
 

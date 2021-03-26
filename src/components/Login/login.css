@@ -1,9 +1,8 @@
-body {
+.login {
     margin: 0;
     padding: 0;
     background-color: #1B203A;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
   }
   #login .container #login-row #login-column #login-box {
     margin-top: 60px;
